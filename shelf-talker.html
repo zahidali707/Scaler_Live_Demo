@@ -1,0 +1,1158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shelf Talkers | Google Edition</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+  <script src="cards-data.js"></script>
+  <style>
+    :root {
+      color-scheme: light;
+      /* Google Official Brand Palette */
+      --google-blue: #4285F4;
+      --google-blue-hover: #1A73E8;
+      --google-blue-light: #E8F0FE;
+      
+      --google-red: #EA4335;
+      --google-red-hover: #D93025;
+      --google-red-light: #FCE8E6;
+      
+      --google-yellow: #FBBC05;
+      --google-yellow-hover: #F29900;
+      --google-yellow-light: #FEF7E0;
+      --google-yellow-dark: #B06000;
+      
+      --google-green: #34A853;
+      --google-green-hover: #1E8E3E;
+      --google-green-light: #E6F4EA;
+
+      /* Google Neutral Surface & Text Tokens */
+      --g-bg: #F8F9FA;
+      --g-surface: #FFFFFF;
+      --g-border: #DADCE0;
+      --g-text: #202124;
+      --g-text-secondary: #5F6368;
+      --g-text-tertiary: #80868B;
+      --g-shadow-sm: 0 1px 3px rgba(60, 64, 67, 0.1), 0 1px 2px rgba(60, 64, 67, 0.06);
+      --g-shadow-md: 0 4px 14px rgba(60, 64, 67, 0.12), 0 2px 6px rgba(60, 64, 67, 0.08);
+      --g-shadow-lg: 0 8px 24px rgba(60, 64, 67, 0.15), 0 4px 10px rgba(60, 64, 67, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--g-text);
+      background-color: var(--g-bg);
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(66, 133, 244, 0.035) 0%, transparent 40%),
+        radial-gradient(circle at 90% 10%, rgba(234, 67, 53, 0.035) 0%, transparent 40%),
+        radial-gradient(circle at 80% 85%, rgba(52, 168, 83, 0.035) 0%, transparent 40%),
+        radial-gradient(circle at 20% 80%, rgba(251, 188, 5, 0.04) 0%, transparent 40%),
+        radial-gradient(#E8EAED 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 20px 20px;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    /* Google 4-Color Vibrant Accent Line */
+    .google-topbar {
+      height: 6px;
+      width: 100%;
+      background: linear-gradient(
+        90deg, 
+        var(--google-blue) 0%, 
+        var(--google-blue) 25%, 
+        var(--google-red) 25%, 
+        var(--google-red) 50%, 
+        var(--google-yellow) 50%, 
+        var(--google-yellow) 75%, 
+        var(--google-green) 75%, 
+        var(--google-green) 100%
+      );
+      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+    }
+
+    .page {
+      width: min(100% - 48px, 1100px);
+      margin: 0 auto;
+      padding: 36px 0 72px;
+    }
+
+    /* Header styling with Google aesthetics */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 28px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--g-border);
+    }
+
+    .header-branding {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .eyebrow-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin: 0;
+      padding: 4px 10px;
+      border-radius: 12px;
+      background: var(--google-blue-light);
+      color: var(--google-blue-hover);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .eyebrow-dots {
+      display: inline-flex;
+      gap: 3px;
+    }
+
+    .eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+    .eyebrow-dot.blue { background: var(--google-blue); }
+    .eyebrow-dot.red { background: var(--google-red); }
+    .eyebrow-dot.yellow { background: var(--google-yellow); }
+    .eyebrow-dot.green { background: var(--google-green); }
+
+    /* Google colored title */
+    h1 {
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(34px, 5vw, 50px);
+      font-weight: 700;
+      letter-spacing: -0.8px;
+      line-height: 1.1;
+    }
+
+    .g-blue { color: var(--google-blue); }
+    .g-red { color: var(--google-red); }
+    .g-yellow { color: var(--google-yellow); }
+    .g-green { color: var(--google-green); }
+
+    .header-side {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+      text-align: right;
+    }
+
+    .intro {
+      max-width: 320px;
+      margin: 0;
+      color: var(--g-text-secondary);
+      font-size: 14.5px;
+      line-height: 1.45;
+    }
+
+    /* Memory & Persistence Status Pill */
+    .storage-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 13px;
+      border-radius: 20px;
+      background: var(--g-surface);
+      border: 1px solid var(--g-border);
+      box-shadow: var(--g-shadow-sm);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--g-text);
+      transition: all 0.2s ease;
+    }
+
+    .storage-pill .pulse-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--google-green);
+      box-shadow: 0 0 0 0 rgba(52, 168, 83, 0.7);
+      animation: pulse-green 2s infinite;
+    }
+
+    @keyframes pulse-green {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 168, 83, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(52, 168, 83, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 168, 83, 0); }
+    }
+
+    /* Main Entry Form - Google Card Design */
+    .entry {
+      margin-bottom: 34px;
+      padding: 26px 28px;
+      border-radius: 18px;
+      background: var(--g-surface);
+      border: 1px solid var(--g-border);
+      box-shadow: var(--g-shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .entry::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(
+        90deg, 
+        var(--google-blue) 0%, 
+        var(--google-blue) 25%, 
+        var(--google-red) 25%, 
+        var(--google-red) 50%, 
+        var(--google-yellow) 50%, 
+        var(--google-yellow) 75%, 
+        var(--google-green) 75%, 
+        var(--google-green) 100%
+      );
+    }
+
+    .fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .field {
+      display: grid;
+      gap: 6px;
+    }
+
+    .field-wide {
+      grid-column: 1 / -1;
+    }
+
+    .label {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--g-text-secondary);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .label-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    input, textarea {
+      width: 100%;
+      min-height: 44px;
+      padding: 10px 14px;
+      border: 1.5px solid var(--g-border);
+      border-radius: 8px;
+      background: #FAFAFA;
+      color: var(--g-text);
+      font-family: inherit;
+      font-size: 14px;
+      transition: all 0.2s ease;
+    }
+
+    input:hover, textarea:hover {
+      border-color: #BDC1C6;
+      background: #FFFFFF;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--google-blue);
+      background: #FFFFFF;
+      box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.18);
+    }
+
+    textarea {
+      min-height: 68px;
+      resize: vertical;
+      line-height: 1.4;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid #F1F3F4;
+    }
+
+    .actions-tip {
+      margin: 0;
+      color: var(--g-text-secondary);
+      font-size: 12.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Lively Button Styles */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      min-height: 40px;
+      padding: 0 20px;
+      border: none;
+      border-radius: 20px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+      text-decoration: none;
+      user-select: none;
+    }
+
+    .btn:active {
+      transform: scale(0.97);
+    }
+
+    /* Google Blue Add Button */
+    .btn-blue {
+      background: var(--google-blue);
+      color: white;
+      box-shadow: 0 2px 6px rgba(66, 133, 244, 0.35);
+    }
+    .btn-blue:hover {
+      background: var(--google-blue-hover);
+      box-shadow: 0 4px 12px rgba(66, 133, 244, 0.45);
+      transform: translateY(-1px);
+    }
+
+    /* Google Green Print Button */
+    .btn-green {
+      background: var(--google-green);
+      color: white;
+      box-shadow: 0 2px 6px rgba(52, 168, 83, 0.3);
+    }
+    .btn-green:hover {
+      background: var(--google-green-hover);
+      box-shadow: 0 4px 12px rgba(52, 168, 83, 0.4);
+      transform: translateY(-1px);
+    }
+
+    /* Google Yellow Save to Folder Button */
+    .btn-yellow {
+      background: var(--google-yellow);
+      color: #3C2A00;
+      box-shadow: 0 2px 6px rgba(251, 188, 5, 0.35);
+    }
+    .btn-yellow:hover {
+      background: var(--google-yellow-hover);
+      color: #1F1500;
+      box-shadow: 0 4px 12px rgba(242, 153, 0, 0.45);
+      transform: translateY(-1px);
+    }
+
+    /* Google Outline / Ghost Buttons */
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--g-border);
+      color: var(--g-text-secondary);
+    }
+    .btn-outline:hover {
+      border-color: var(--google-blue);
+      color: var(--google-blue);
+      background: var(--google-blue-light);
+    }
+
+    .btn-danger-outline {
+      background: transparent;
+      border: 1.5px solid var(--g-border);
+      color: var(--g-text-secondary);
+      font-size: 12px;
+      padding: 0 14px;
+      min-height: 34px;
+    }
+    .btn-danger-outline:hover {
+      border-color: var(--google-red);
+      color: var(--google-red);
+      background: var(--google-red-light);
+    }
+
+    /* Ready for the Shelf Section */
+    .cards-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin: 0 0 20px;
+    }
+
+    .cards-heading-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--g-text);
+    }
+
+    #card-count-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 10px;
+      border-radius: 12px;
+      background: var(--google-blue-light);
+      color: var(--google-blue-hover);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .cards-tools {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* Hidden file input for load from file */
+    #file-input {
+      display: none;
+    }
+
+    /* Cards Grid */
+    .card-list {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 18px;
+    }
+
+    /* 
+      Shelf Talker Card 
+      Strict 9cm x 5cm dimensions for printing, with lively Google aesthetic on-screen
+    */
+    .shelf-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 9cm;
+      height: 5cm;
+      flex: 0 0 9cm;
+      overflow: hidden;
+      padding: 7mm 8mm 6mm;
+      border-radius: 10px;
+      background: var(--g-surface);
+      border: 1px solid rgba(218, 220, 224, 0.85);
+      box-shadow: 0 3px 12px rgba(60, 64, 67, 0.08);
+      break-inside: avoid;
+      animation: card-wiggle-hop 6.5s ease-in-out infinite;
+      transform-origin: 50% 85%;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .shelf-card:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(60, 64, 67, 0.15);
+      z-index: 5;
+    }
+
+    .shelf-card:nth-child(even) { 
+      animation-delay: -3.2s; 
+    }
+
+    @keyframes card-wiggle-hop {
+      0%, 100% { transform: translateY(0) rotate(-0.4deg); }
+      14% { transform: translateY(0) rotate(0.4deg); }
+      24% { transform: translateY(-4px) rotate(0.8deg); }
+      30% { transform: translateY(0) rotate(-0.6deg); }
+      36% { transform: translateY(0) rotate(0.3deg); }
+      44% { transform: translateY(0) rotate(-0.3deg); }
+    }
+
+    /* Google 4-Color Left Accent Bar on Cards */
+    .shelf-card::before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 5px;
+      content: "";
+      border-radius: 10px 0 0 10px;
+    }
+
+    /* Blue Card */
+    .shelf-card.card-blue::before { background: var(--google-blue); }
+    .shelf-card.card-blue .staff-pick {
+      background: var(--google-blue-light);
+      color: var(--google-blue-hover);
+    }
+
+    /* Red Card */
+    .shelf-card.card-red::before { background: var(--google-red); }
+    .shelf-card.card-red .staff-pick {
+      background: var(--google-red-light);
+      color: var(--google-red-hover);
+    }
+
+    /* Yellow Card */
+    .shelf-card.card-yellow::before { background: var(--google-yellow); }
+    .shelf-card.card-yellow .staff-pick {
+      background: var(--google-yellow-light);
+      color: var(--google-yellow-dark);
+    }
+
+    /* Green Card */
+    .shelf-card.card-green::before { background: var(--google-green); }
+    .shelf-card.card-green .staff-pick {
+      background: var(--google-green-light);
+      color: var(--google-green-hover);
+    }
+
+    .card-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+
+    .staff-pick {
+      margin: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 7px;
+      border-radius: 8px;
+      font-size: 8.5px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .card-delete-btn {
+      opacity: 0;
+      background: transparent;
+      border: none;
+      color: var(--g-text-tertiary);
+      cursor: pointer;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-size: 13px;
+      line-height: 1;
+      transition: all 0.2s ease;
+    }
+
+    .shelf-card:hover .card-delete-btn,
+    .card-delete-btn:focus-visible {
+      opacity: 1;
+    }
+
+    .card-delete-btn:hover {
+      color: var(--google-red);
+      background: var(--google-red-light);
+    }
+
+    .book-title {
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--g-text);
+      overflow-wrap: anywhere;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .book-author {
+      margin: 2px 0 0;
+      color: var(--g-text-secondary);
+      font-size: 10.5px;
+      font-style: italic;
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .book-reason {
+      margin: 5px 0 0;
+      color: #3C4043;
+      font-size: 9.5px;
+      line-height: 1.25;
+      overflow-wrap: anywhere;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .picker {
+      margin: auto 0 0;
+      align-self: flex-end;
+      max-width: 100%;
+      color: var(--g-text-secondary);
+      font-size: 9px;
+      font-weight: 600;
+      font-style: italic;
+      overflow-wrap: anywhere;
+      text-align: right;
+    }
+
+    .empty-state {
+      width: 100%;
+      padding: 42px 24px;
+      border: 2px dashed var(--g-border);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.6);
+      color: var(--g-text-secondary);
+      font-size: 15px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .empty-state-icons {
+      display: flex;
+      gap: 6px;
+    }
+
+    .empty-state-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    /* Toast Notification */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      pointer-events: none;
+    }
+
+    .toast {
+      pointer-events: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      border-radius: 24px;
+      background: #202124;
+      color: #FFFFFF;
+      font-size: 13.5px;
+      font-weight: 500;
+      box-shadow: var(--g-shadow-lg);
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .toast-badge {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--google-green);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 680px) {
+      .page { width: min(100% - 28px, 1100px); padding-top: 24px; }
+      header { align-items: flex-start; flex-direction: column; gap: 14px; }
+      .header-side { align-items: flex-start; text-align: left; }
+      .entry { padding: 18px; }
+      .fields { grid-template-columns: 1fr; }
+      .field-wide { grid-column: auto; }
+      .actions { align-items: stretch; flex-direction: column; }
+      .actions .btn { width: 100%; }
+      .cards-heading { flex-direction: column; align-items: flex-start; }
+      .cards-tools { width: 100%; justify-content: flex-start; }
+      .shelf-card { width: 100%; flex: 1 1 100%; }
+    }
+
+    /* Printing Mode */
+    @media print {
+      @page { margin: 12mm; }
+      body {
+        min-height: 0;
+        background: white !important;
+      }
+      .google-topbar, header, .entry, .cards-heading, .empty-state, .card-delete-btn, .toast-container {
+        display: none !important;
+      }
+      .page { width: 100%; margin: 0; padding: 0; }
+      .card-list { gap: 6mm; }
+      .shelf-card {
+        animation: none !important;
+        box-shadow: none !important;
+        transform: none !important;
+        border: 1px solid #CCC !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .shelf-card::before {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .staff-pick {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .shelf-card { animation: none; }
+      .storage-pill .pulse-indicator { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Google Vibrant 4-Color Top Line -->
+  <div class="google-topbar"></div>
+
+  <main class="page">
+    <header>
+      <div class="header-branding">
+        <div class="eyebrow-container">
+          <p class="eyebrow">
+            The neighborhood bookshop
+          </p>
+          <div class="eyebrow-dots" aria-hidden="true">
+            <span class="eyebrow-dot blue"></span>
+            <span class="eyebrow-dot red"></span>
+            <span class="eyebrow-dot yellow"></span>
+            <span class="eyebrow-dot green"></span>
+          </div>
+        </div>
+        <!-- Google Logo Colored Title -->
+        <h1>
+          <span class="g-blue">S</span><span class="g-red">h</span><span class="g-yellow">e</span><span class="g-blue">l</span><span class="g-green">f</span> 
+          <span class="g-red">T</span><span class="g-blue">a</span><span class="g-yellow">l</span><span class="g-green">k</span><span class="g-red">e</span><span class="g-blue">r</span><span class="g-green">s</span>
+        </h1>
+      </div>
+      <div class="header-side">
+        <div class="storage-pill" id="storage-status" title="Cards are automatically saved into browser local storage">
+          <span class="pulse-indicator"></span>
+          <span id="storage-status-text">Saved in memory (local storage)</span>
+        </div>
+        <p class="intro">A good book finds its way into conversation.</p>
+      </div>
+    </header>
+
+    <!-- Card Input Form -->
+    <form class="entry" id="card-form">
+      <div class="fields">
+        <label class="field" for="title">
+          <span class="label">
+            <span class="label-dot" style="background: var(--google-blue);"></span>
+            Book title
+          </span>
+          <input id="title" name="title" type="text" required autocomplete="off" placeholder="e.g. The Midnight Library">
+        </label>
+        <label class="field" for="author">
+          <span class="label">
+            <span class="label-dot" style="background: var(--google-red);"></span>
+            Author
+          </span>
+          <input id="author" name="author" type="text" autocomplete="off" placeholder="Who wrote it?">
+        </label>
+        <label class="field field-wide" for="reason">
+          <span class="label">
+            <span class="label-dot" style="background: var(--google-yellow);"></span>
+            Why we like it
+          </span>
+          <textarea id="reason" name="reason" rows="2" placeholder="One or two lines sharing why you love this book..."></textarea>
+        </label>
+        <label class="field" for="picker">
+          <span class="label">
+            <span class="label-dot" style="background: var(--google-green);"></span>
+            Whose pick?
+          </span>
+          <input id="picker" name="picker" type="text" autocomplete="off" placeholder="Your name (e.g. Sarah)">
+        </label>
+      </div>
+      <div class="actions">
+        <p class="actions-tip">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--google-blue);"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          Cards print at standard 9 × 5 cm shelf dimensions & save automatically.
+        </p>
+        <button class="btn btn-blue" type="submit" id="add-card-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          Add card
+        </button>
+      </div>
+    </form>
+
+    <!-- Cards Section -->
+    <section aria-labelledby="cards-title">
+      <div class="cards-heading">
+        <div class="cards-heading-left">
+          <h2 id="cards-title">Ready for the shelf</h2>
+          <span id="card-count-badge" aria-live="polite">0 cards</span>
+        </div>
+        <div class="cards-tools">
+          <!-- Save directly to folder file button -->
+          <button class="btn btn-yellow" id="save-folder-btn" type="button" title="Save cards directly to cards.json in your Github Copilot folder">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+            Save to folder (cards.json)
+          </button>
+
+          <!-- Load / Import from folder button -->
+          <button class="btn btn-outline" id="load-folder-btn" type="button" title="Import cards from a cards.json file in your folder">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+            Load from file
+          </button>
+          <input type="file" id="file-input" accept=".json">
+
+          <!-- Print button -->
+          <button class="btn btn-green" id="print-button" type="button">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            Print these
+          </button>
+
+          <!-- Clear / Reset to default -->
+          <button class="btn btn-danger-outline" id="reset-cards-btn" type="button" title="Reset cards to default samples">
+            Reset
+          </button>
+        </div>
+      </div>
+
+      <!-- Card container -->
+      <div class="card-list" id="card-list" aria-live="polite">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Interactive Toast Notification Container -->
+  <div class="toast-container" id="toast-container" aria-live="assertive"></div>
+
+  <script>
+    // Storage Key for local persistence
+    const STORAGE_KEY = 'shelf_talker_cards_v1';
+    const COLOR_CLASSES = ['card-blue', 'card-red', 'card-yellow', 'card-green'];
+
+    // DOM References
+    const form = document.querySelector("#card-form");
+    const cardList = document.querySelector("#card-list");
+    const cardCountBadge = document.querySelector("#card-count-badge");
+    const saveFolderBtn = document.querySelector("#save-folder-btn");
+    const loadFolderBtn = document.querySelector("#load-folder-btn");
+    const fileInput = document.querySelector("#file-input");
+    const resetCardsBtn = document.querySelector("#reset-cards-btn");
+    const printBtn = document.querySelector("#print-button");
+    const toastContainer = document.querySelector("#toast-container");
+
+    // Internal state
+    let cards = [];
+
+    // Helper: Show brief animated toast notification
+    function showToast(message, color = 'green') {
+      const toast = document.createElement("div");
+      toast.className = "toast";
+      const dotColor = color === 'green' ? 'var(--google-green)' : 
+                       color === 'blue' ? 'var(--google-blue)' : 
+                       color === 'yellow' ? 'var(--google-yellow)' : 'var(--google-red)';
+      toast.innerHTML = `<span class="toast-badge" style="background:${dotColor}"></span><span>${message}</span>`;
+      toastContainer.appendChild(toast);
+      
+      requestAnimationFrame(() => toast.classList.add("show"));
+      setTimeout(() => {
+        toast.classList.remove("show");
+        setTimeout(() => toast.remove(), 250);
+      }, 3200);
+    }
+
+    // Helper: Add text child safely
+    function addTextElement(parent, className, text) {
+      if (!text) return;
+      const element = document.createElement("p");
+      element.className = className;
+      element.textContent = text;
+      parent.append(element);
+    }
+
+    // Save cards array to localStorage (memory)
+    function saveCardsToStorage() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(cards));
+      } catch (err) {
+        console.error("Failed to save to localStorage:", err);
+      }
+      updateCount();
+    }
+
+    // Update count and storage status indicator
+    function updateCount() {
+      const count = cards.length;
+      cardCountBadge.textContent = `${count} ${count === 1 ? "card" : "cards"}`;
+      const statusText = document.querySelector("#storage-status-text");
+      if (statusText) {
+        statusText.textContent = `Auto-saved in memory (${count} ${count === 1 ? "card" : "cards"})`;
+      }
+    }
+
+    // Render cards to DOM
+    function renderCards() {
+      cardList.innerHTML = "";
+
+      if (cards.length === 0) {
+        const empty = document.createElement("div");
+        empty.className = "empty-state";
+        empty.innerHTML = `
+          <div class="empty-state-icons">
+            <span class="empty-state-dot" style="background:var(--google-blue)"></span>
+            <span class="empty-state-dot" style="background:var(--google-red)"></span>
+            <span class="empty-state-dot" style="background:var(--google-yellow)"></span>
+            <span class="empty-state-dot" style="background:var(--google-green)"></span>
+          </div>
+          <p style="margin:0;font-weight:600;">No shelf cards yet.</p>
+          <p style="margin:0;font-size:13px;color:var(--g-text-secondary);">Fill out the form above to add your first recommendation!</p>
+        `;
+        cardList.appendChild(empty);
+        updateCount();
+        return;
+      }
+
+      cards.forEach((cardData, index) => {
+        const card = document.createElement("article");
+        const colorClass = COLOR_CLASSES[index % COLOR_CLASSES.length];
+        card.className = `shelf-card ${colorClass}`;
+        card.dataset.id = cardData.id || `card-${index}`;
+
+        // Top row with "Staff Pick" and interactive delete button
+        const topRow = document.createElement("div");
+        topRow.className = "card-top-row";
+
+        const label = document.createElement("span");
+        label.className = "staff-pick";
+        label.textContent = "★ Staff Pick";
+        topRow.appendChild(label);
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.className = "card-delete-btn";
+        deleteBtn.type = "button";
+        deleteBtn.title = "Delete this card";
+        deleteBtn.innerHTML = "&times;";
+        deleteBtn.setAttribute("aria-label", `Delete card for ${cardData.title}`);
+        deleteBtn.addEventListener("click", () => deleteCard(index));
+        topRow.appendChild(deleteBtn);
+
+        card.appendChild(topRow);
+
+        // Title
+        const titleElement = document.createElement("h3");
+        titleElement.className = "book-title";
+        titleElement.textContent = cardData.title;
+        card.appendChild(titleElement);
+
+        // Author, Reason, Picker
+        addTextElement(card, "book-author", cardData.author ? `by ${cardData.author}` : "");
+        addTextElement(card, "book-reason", cardData.reason || "");
+        addTextElement(card, "picker", cardData.picker ? `— ${cardData.picker}` : "");
+
+        cardList.appendChild(card);
+      });
+
+      updateCount();
+    }
+
+    // Delete a card
+    function deleteCard(index) {
+      const removed = cards.splice(index, 1);
+      saveCardsToStorage();
+      renderCards();
+      showToast(`Removed "${removed[0]?.title || 'Card'}"`, 'red');
+    }
+
+    // Form submission
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      const title = String(data.get("title") || "").trim();
+
+      if (!title) {
+        form.elements.title.setCustomValidity("Please enter a book title.");
+        form.reportValidity();
+        return;
+      }
+
+      form.elements.title.setCustomValidity("");
+
+      const newCard = {
+        id: "card-" + Date.now(),
+        title: title,
+        author: String(data.get("author") || "").trim(),
+        reason: String(data.get("reason") || "").trim(),
+        picker: String(data.get("picker") || "").trim(),
+        createdAt: new Date().toISOString()
+      };
+
+      cards.unshift(newCard);
+      saveCardsToStorage();
+      renderCards();
+
+      showToast(`✓ Added & saved "${title}"!`, 'blue');
+      form.reset();
+      form.elements.title.focus();
+    });
+
+    form.elements.title.addEventListener("input", () => {
+      form.elements.title.setCustomValidity("");
+    });
+
+    // Save directly to folder file (cards.json)
+    async function saveToFolderFile() {
+      const jsonContent = JSON.stringify(cards, null, 2);
+
+      // In Chrome/Edge: Native File System Access API
+      if (window.showSaveFilePicker) {
+        try {
+          const handle = await window.showSaveFilePicker({
+            suggestedName: 'cards.json',
+            types: [{
+              description: 'JSON Card Database',
+              accept: { 'application/json': ['.json'] }
+            }]
+          });
+          const writable = await handle.createWritable();
+          await writable.write(jsonContent);
+          await writable.close();
+          showToast("✓ Successfully saved directly to cards.json in your folder!", "green");
+          return;
+        } catch (err) {
+          if (err.name === 'AbortError') return; // User cancelled dialog
+          console.warn("File System Access failed, using download fallback", err);
+        }
+      }
+
+      // Universal download fallback
+      const blob = new Blob([jsonContent], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "cards.json";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      showToast("✓ Downloaded cards.json! Save into your folder.", "yellow");
+    }
+
+    saveFolderBtn.addEventListener("click", saveToFolderFile);
+
+    // Load from JSON file
+    loadFolderBtn.addEventListener("click", () => fileInput.click());
+
+    fileInput.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        try {
+          const imported = JSON.parse(event.target.result);
+          if (Array.isArray(imported)) {
+            cards = imported;
+            saveCardsToStorage();
+            renderCards();
+            showToast(`✓ Loaded ${cards.length} cards from ${file.name}!`, "green");
+          } else {
+            showToast("Invalid format: File should contain a JSON array of cards", "red");
+          }
+        } catch (err) {
+          showToast("Could not read JSON file. Check file syntax.", "red");
+        }
+        fileInput.value = "";
+      };
+      reader.readAsText(file);
+    });
+
+    // Reset to defaults
+    resetCardsBtn.addEventListener("click", () => {
+      if (confirm("Reset shelf talkers to original sample cards?")) {
+        if (window.INITIAL_SHELF_CARDS && Array.isArray(window.INITIAL_SHELF_CARDS)) {
+          cards = JSON.parse(JSON.stringify(window.INITIAL_SHELF_CARDS));
+        } else {
+          cards = [];
+        }
+        saveCardsToStorage();
+        renderCards();
+        showToast("✓ Reset to default sample cards!", "yellow");
+      }
+    });
+
+    // Print
+    printBtn.addEventListener("click", () => window.print());
+
+    // Initialize application state
+    function init() {
+      // 1. Try to load from localStorage
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) {
+        try {
+          const parsed = JSON.parse(stored);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            cards = parsed;
+            renderCards();
+            return;
+          }
+        } catch (err) {
+          console.error("Error reading from storage", err);
+        }
+      }
+
+      // 2. Fallback to initial cards bundled in cards-data.js (in the folder)
+      if (window.INITIAL_SHELF_CARDS && Array.isArray(window.INITIAL_SHELF_CARDS)) {
+        cards = JSON.parse(JSON.stringify(window.INITIAL_SHELF_CARDS));
+        saveCardsToStorage();
+      } else {
+        cards = [];
+      }
+
+      renderCards();
+    }
+
+    // Launch on DOM ready
+    init();
+  </script>
+</body>
+</html>
