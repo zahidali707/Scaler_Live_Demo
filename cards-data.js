@@ -1,0 +1,35 @@
+// Initial cards data for Shelf Talkers (saved in the Github Copilot folder)
+window.INITIAL_SHELF_CARDS = [
+  {
+    "id": "card-1",
+    "title": "The Midnight Library",
+    "author": "Matt Haig",
+    "reason": "Between life and death there is a library. A heartwarming exploration of infinite possibilities and regret.",
+    "picker": "Sarah",
+    "createdAt": "2026-09-30T10:00:00.000Z"
+  },
+  {
+    "id": "card-2",
+    "title": "Tomorrow, and Tomorrow, and Tomorrow",
+    "author": "Gabrielle Zevin",
+    "reason": "A dazzling, tender story of identity, creativity, friendship, and art spanning three decades.",
+    "picker": "David",
+    "createdAt": "2026-09-30T11:15:00.000Z"
+  },
+  {
+    "id": "card-3",
+    "title": "Klara and the Sun",
+    "author": "Kazuo Ishiguro",
+    "reason": "Luminous and deeply moving look at love and the human heart through the eyes of an artificial friend.",
+    "picker": "Elena",
+    "createdAt": "2026-09-30T12:30:00.000Z"
+  },
+  {
+    "id": "card-4",
+    "title": "Braiding Sweetgrass",
+    "author": "Robin Wall Kimmerer",
+    "reason": "Indigenous wisdom, scientific knowledge, and the teachings of plants. An absolute essential read.",
+    "picker": "Marcus",
+    "createdAt": "2026-09-30T14:00:00.000Z"
+  }
+];
